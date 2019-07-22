@@ -115,7 +115,6 @@ from tvm import relay
 mod, params = relay.frontend.from_caffe2(resnet50.init_net, resnet50.predict_net, shape_dict, dtype_dict)
 
 # compile the model
-# target x86 CPU
 target = 'metal'
 with relay.build_config(opt_level=3):
     graph, lib, params = relay.build(mod, target, target_host=target_host, params=params)
